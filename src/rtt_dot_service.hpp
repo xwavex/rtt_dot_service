@@ -58,11 +58,14 @@ class Dot : public RTT::Service, public RTT::base::ExecutableInterface {
      *  The method iterates over all peer components and generates and writes out a DOT file giving an overview of the current deployment configuration. The file currently displays all peer components, colored according to their taskstate, all component ports, names and connections to other components.
      */
     bool execute();
+    bool executeMinimal();
 
     /// @name Properties
     //@{
     /// Name of the DOT file to write the deployment configuration to
     std::string m_dot_file;
+    /// Name of the DOT file to write the deployment configuration to
+    std::string m_dot_file_minimal;
     /// Additional arguments to pass to the component drawings
     std::string m_comp_args;
     /// Additional arguments to pass to the connection drawings
@@ -75,5 +78,6 @@ class Dot : public RTT::Service, public RTT::base::ExecutableInterface {
     std::string mpeer;
     std::string quote(std::string const& name);
     void scanService(std::string path, Service::shared_ptr sv);
+    void scanServiceMinimal(std::string path, Service::shared_ptr sv);
 };
 #endif
